@@ -1,2 +1,2 @@
-Private-Package: japa.parser*, todolist*, templates*, assets*
-Import-Package: *
+Private-Package: todolist*, templates*, assets*
+Import-Package: !javassist.util.proxy, !org.wisdom.orientdb.object, !org.wisdom.orientdb.document, !javax.persistence, *
