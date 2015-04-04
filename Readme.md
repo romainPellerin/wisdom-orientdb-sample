@@ -1,0 +1,1 @@
+A standalone version extracted from [wisdom-orientdb](https://github.com/wisdom-framework/wisdom-orientdb) samples.
