@@ -1,0 +1,2 @@
+Private-Package: japa.parser*, todolist*, templates*, assets*
+Import-Package: *
