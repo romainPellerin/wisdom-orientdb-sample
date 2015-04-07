@@ -76,14 +76,16 @@
         <dependency>
             <groupId>org.wisdom-framework</groupId>
             <artifactId>wisdom-orientdb-object</artifactId>
-            <version>0.2.4</version>
+            <version>0.2.5-SNAPSHOT</version>
+            <!--<version>0.2.4</version>-->
         </dependency>
 
 
         <dependency>
             <groupId>org.wisdom-framework</groupId>
             <artifactId>wisdom-orientdb-document</artifactId>
-            <version>0.2.4</version>
+            <version>0.2.5-SNAPSHOT</version>
+            <!--<version>0.2.4</version>-->
         </dependency>
 
         <!--<dependency>
