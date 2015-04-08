@@ -46,6 +46,12 @@
         </dependency>
 
         <dependency>
+            <groupId>org.wisdom-framework</groupId>
+            <artifactId>wisdom-monitor</artifactId>
+            <version>${wisdom.version}</version>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.felix</groupId>
             <artifactId>org.apache.felix.ipojo.annotations</artifactId>
         </dependency>
