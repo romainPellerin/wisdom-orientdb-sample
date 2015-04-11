@@ -62,20 +62,49 @@ function TodoListController() {
 
     function newTodo(event) {
 
+        var ownerId = $("#owner");
+        if (ownerId.val() == "") {
+            ownerId.addClass("error");
+            return;
+        }
+        else ownerId.removeClass("error");
+
+        var user = {
+            name: ownerId.val()
+        }
+
         var newtodo = {
+            owner: user,
             content: event.node.value,
             done: "false"
         };
+
+
+        $.ajax({
+            type: "GET",
+            contentType: "application/json; charset=UTF-8",
+            url: "/user/name/"+user.name
+        }).done(function(data) {
+            ownerId.addClass("valid");
+            newTodoValidUser(newtodo);
+        }).fail(function(){
+            ownerId.addClass("error");
+        });
+    }
+
+
+    function newTodoValidUser(todo){
 
         $.ajax({
             type: "PUT",
             contentType: "application/json; charset=UTF-8",
             url: _model.url,
-            data: JSON.stringify(newtodo)
+            data: JSON.stringify(todo)
         }).done(function(data) {
             _model.todos.push(data);
         });
     }
+
 
     function updateTodo(event) {
         var todo = event.context;
@@ -95,7 +124,7 @@ function TodoListController() {
 
         $.ajax({
             type: "DELETE",
-            url: encodeIdURL(_model.url+"/",todo.id)
+            url: encodeIdURL(_model.url,todo.id)
         }).done(function() {
             _model.todos.splice(index, 1);
         });

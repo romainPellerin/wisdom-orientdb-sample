@@ -15,6 +15,7 @@ import org.wisdom.api.http.Result;
 import org.wisdom.orientdb.object.OrientDbCrud;
 import todolist.model.Todo;
 import todolist.model.TodoList;
+import todolist.model.User;
 
 import javax.validation.Valid;
 import java.util.Iterator;
@@ -26,6 +27,8 @@ import static org.wisdom.api.http.HttpMethod.*;
  *
  * @version 1.0
  * @author <a href="mailto:jbardin@tech-arts.com">Jonathan M. Bardin</a>
+ *
+ * modded by Romain Pellerin aka @rom1
  */
 @Controller
 @Path("/list")
@@ -38,11 +41,19 @@ public class TodoController extends DefaultController{
     @Model(value = Todo.class)
     private OrientDbCrud<Todo,String> todoCrud;
 
+    @Model(value = User.class)
+    private OrientDbCrud<Todo,String> userCrud;
+
     @Validate
     private void start(){
         //Populate the db with some default value
         if(!listCrud.findAll().iterator().hasNext()){
+
+            User user = new User();
+            user.setName("@barjo");
+
             Todo todo = new Todo();
+            todo.setOwner(user);
             todo.setContent("Check out this awesome todo demo!");
             todo.setDone(true);
 
@@ -64,6 +75,7 @@ public class TodoController extends DefaultController{
     public Result getList(){
         return ok(Iterables.toArray(listCrud.findAll(), TodoList.class)).json();
     }
+
 
     /**
      * Create a new todolist.

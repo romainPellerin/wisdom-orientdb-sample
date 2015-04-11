@@ -22,6 +22,8 @@ public class Todo {
     @Id
     private String id;
 
+    private User owner;
+
     private Date date;
 
     private String content;
@@ -54,6 +56,14 @@ public class Todo {
 
     public String getId() {
         return id;
+    }
+
+    public User getOwner() {
+        return owner;
+    }
+
+    public void setOwner(User owner) {
+        this.owner = owner;
     }
 
 }

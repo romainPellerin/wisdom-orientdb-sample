@@ -8,6 +8,7 @@
 
 <div class="row">
     <div class="col-md-4 col-md-push-4" id="newTodo">
+        <textarea id="owner" placeholder="Enter your id" autofocus/>
         <textarea on-enter="newTodo" placeholder="Press Enter to add a TODO" autofocus/>
     </div>
 </div>
