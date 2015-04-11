@@ -29,16 +29,15 @@ import static org.wisdom.api.http.HttpMethod.GET;
 @Path("/")
 public class HomeController extends DefaultController{
     static {Class workaround = Proxy.class;}
-    /*@View("home")
+    @View("home")
     private Template home;
-    */
+
 
     @Model(value = TodoList.class)
     private OrientDbCrud<TodoList,String> listCrud;
 
     @Model(value = Todo.class)
     private OrientDbCrud<Todo,String> todoCrud;
-
 
     /**
      * Return the todolist view.
@@ -48,10 +47,6 @@ public class HomeController extends DefaultController{
      */
     @Route(method = GET,uri = "")
     public Result getList(){
-
-
-        return ok("OK");
-        //return ok(Iterables.toArray(listCrud.findAll(), TodoList.class)).json();
-        //return ok(render(home));
+        return ok(render(home));
     }
 }
